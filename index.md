@@ -1,37 +1,93 @@
-## Welcome to GitHub Pages
+# ZoomImage-Xamarin
+A simple pinch-to-zoom ImageView binding library for Xamarin.Android with an emphasis on a smooth and natural feel, based on: https://github.com/jsibbold/zoomage
 
-You can use the [editor on GitHub](https://github.com/FANMixco/ZoomImage-Xamarin/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+|  Package  |Latest Release|
+|:----------|:------------:|
+|**ZoomImage-Xamarin**|[![NuGet Badge ZoomImage-Xamarin](https://buildstats.info/nuget/ZoomImage-Xamarin)](https://www.nuget.org/packages/ZoomImage-Xamarin/)|
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+# Using It
 
-### Markdown
+Simply add a ```ZoomageView``` as you would any typical ```ImageView``` in Android. The ```scaleType``` that you set on your ```ZoomageView``` will determine the starting size and position of your ```ZoomageView```'s image. This is the inherited ```ImageView.ScaleType``` from Android. With a ```ZoomageView```, the ```fitCenter``` or ```centerInside``` scale types usually make the most sense to use, ```fitCenter``` being Android's default scale type.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```xml
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    
+        <com.jsibbold.zoomage.ZoomageView
+            android:id="@+id/myZoomageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/my_zoomable_image"
+            app:zoomage_restrictBounds="false"
+            app:zoomage_animateOnReset="true"
+            app:zoomage_autoResetMode="UNDER"
+            app:zoomage_autoCenter="true"
+            app:zoomage_zoomable="true"
+            app:zoomage_translatable="true"
+            app:zoomage_minScale="0.6"
+            app:zoomage_maxScale="8"
+            />
+    </RelativeLayout>
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+If using a ```ZoomageView``` with a view pager, it is recommended that [ViewPager2](https://developer.android.com/jetpack/androidx/releases/viewpager2) is used.
 
-### Jekyll Themes
+## XML Attributes
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/FANMixco/ZoomImage-Xamarin/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+```
+zoomage_restrictBounds="true|false"
+```
+Restricts the bounds of the image so it does not wander outside the border of the ImageView when it's smaller than the frame size,
+and restricts the bounds to stop at the edges of the ImageView when the image is larger than the frame size. Default value is false.
 
-### Support or Contact
+```
+zoomage_animateOnReset="true|false"
+```
+Image will animate back to its starting size whenever it is reset if true, and will snap back to its starting size when false.
+Default value is true.
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+```
+zoomage_autoResetMode="UNDER|OVER|ALWAYS|NEVER"
+```
+Determines at what times the image will reset to its starting size. Note that UNDER, OVER, and ALWAYS all have the effect of
+resetting the image to its starting position if its size has not changed. Default value is UNDER.
+
+```
+zoomage_autoCenter="true|false"
+```
+This will cause the image to pull itself into view on-screen if it is partially off-screen. Default value is true.
+
+```
+zoomage_minScale="{float greater than 0}"
+```
+The minimum allowed scale for the image. Ideally this should be less than 1, must be greater than 0, and must
+be less than maxScale. Default value is 0.6.
+
+```
+zoomage_maxScale="{float greater than 0}"
+```
+The maximum allowed scale for the image. Ideally this should be greater than 1, must be greater than 0, and must
+be greater than minScale. Default value is 8.
+
+```
+zoomage_zoomable="true|false"
+```
+Sets whether zooming is allowed. Default value is true.
+
+```
+zoomage_translatable="true|false"
+```
+Sets whether translation is allowed. Default value is true.
+
+```
+zoomage_doubleTapToZoom="true|false"
+```
+Sets whether double tap to zoom functionality is enabled. Default is true.
+
+```
+zoomage_doubleTapToZoomScaleFactor="{float within bounds of min and max scale}"
+```
+Sets the scale factor for double tap to zoom functionality. Default is 3.
