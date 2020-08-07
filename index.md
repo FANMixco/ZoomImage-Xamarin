@@ -1,5 +1,4 @@
-# ZoomImage-Xamarin
-A simple pinch-to-zoom ImageView binding library for Xamarin.Android with an emphasis on a smooth and natural feel, based on: https://github.com/jsibbold/zoomage
+# Get it
 
 |  Package  |Latest Release|
 |:----------|:------------:|
