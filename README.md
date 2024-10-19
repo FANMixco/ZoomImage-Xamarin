@@ -1,9 +1,9 @@
 # ZoomImage-Xamarin
 A simple pinch-to-zoom ImageView binding library for Xamarin.Android with an emphasis on a smooth and natural feel, based on: https://github.com/jsibbold/zoomage
 
-|  Package  |Latest Release|
-|:----------|:------------:|
-|**ZoomImage-Xamarin**|[![NuGet Badge ZoomImage-Xamarin](https://buildstats.info/nuget/ZoomImage-Xamarin)](https://www.nuget.org/packages/ZoomImage-Xamarin/)|
+|Latest Release|Downloads|
+|:------------:|:------------:|
+|[![NuGet Badge ZoomImage-Xamarin](https://img.shields.io/nuget/v/ZoomImage-Xamarin)](https://www.nuget.org/packages/ZoomImage-Xamarin/)|[![NuGet Badge ZoomImage-Xamarin](https://img.shields.io/nuget/dt/ZoomImage-Xamarin)](https://www.nuget.org/packages/ZoomImage-Xamarin/)|
 
 # Using It
 
